@@ -11,6 +11,16 @@ export const InputContainer = styled.div`
   input {
     height: 30px;
     border-radius: 6px;
-    border: 1px solid ;
+    border: 1px solid var(--purple-light);
+    outline: var(--purple);
+    padding-left: 5px;
+
+    &:focus,
+    &:hover {
+      outline: none;
+      border-color:var(--purple);
+      box-shadow: 0 0 0 3px rgb(105, 51, 255,0.2);
+    }
+  
   }
 ` 

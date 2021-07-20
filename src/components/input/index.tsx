@@ -9,11 +9,19 @@ interface IInputTypes {
   onChange?: () => void;
 }
 
-export const Input = ({ label, name, type, value, onChange }: IInputTypes) => {
+export const Input = ({
+  label,
+  name,
+  type,
+  value,
+  placeholder,
+  onChange,
+}: IInputTypes) => {
   return (
     <InputContainer>
       <label htmlFor={name}>{label}</label>
       <input
+        placeholder={placeholder}
         id={name}
         name={name}
         type={type}
