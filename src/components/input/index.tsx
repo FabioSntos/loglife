@@ -6,7 +6,7 @@ interface IInputTypes {
   type: string;
   value?: string;
   placeholder: string;
-  onChange?: () => void;
+  onChange?: any;
 }
 
 export const Input = ({
