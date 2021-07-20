@@ -18,19 +18,21 @@ export const Login = () => {
   const [passwordInput, setPasswordInput] = useState<IPasswordInput>(
     {} as IPasswordInput
   );
-  console.log(emailInput, passwordInput);
+
+  console.log("sem o JSON.stringlfy", emailInput.email, passwordInput.password);
+
   const handleAuth = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       try {
         auth.signInWithEmailAndPassword(
-          emailInput as any,
-          passwordInput as any
+          emailInput.email,
+          passwordInput.password
         );
-        history.push("/test");
       } catch (error) {
         console.log(error);
       }
+      history.push("/test");
     },
     [history, passwordInput, emailInput]
   );
