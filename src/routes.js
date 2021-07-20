@@ -1,11 +1,12 @@
-import { BrowserRoutes, Switch, Route} from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Login } from "./views/Login";
 
-
-
-export const routes = () => {
+export const Router = () => {
   return (
-    <BrowserRoutes>
-      <Route path="/" />
-    </BrowserRoutes>
-  )
-}
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={Login} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
