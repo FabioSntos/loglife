@@ -1,14 +1,21 @@
 import { Input } from "../../components/input";
+import { Container } from "./styles";
 
 export const Login = () => {
   return (
-    <div>
+    <Container>
       <Input
         name="login"
         placeholder="escreva seu email"
         label="Email"
         type="email"
       />
-    </div>
+      <Input
+        name="password"
+        placeholder="escreva sua senha"
+        label="password"
+        type="password"
+      />
+    </Container>
   );
 };

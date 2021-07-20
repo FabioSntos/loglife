@@ -3,10 +3,10 @@ import styled from 'styled-components'
 export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 500px;
   padding-left: 10%;
   padding-right: 10%;
-  margin: 0 auto;
+  margin: 10px auto;
+  
   
   input {
     height: 30px;
@@ -14,6 +14,7 @@ export const InputContainer = styled.div`
     border: 1px solid var(--purple-light);
     outline: var(--purple);
     padding-left: 5px;
+    width: 400px;
 
     &:focus,
     &:hover {
