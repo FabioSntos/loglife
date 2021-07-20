@@ -2,28 +2,37 @@ import { FormEvent, useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Input } from "../../components/input";
-import { apiLogin } from "../../services/api";
+import { auth } from "../../services/api";
 import { Container } from "./styles";
 
-interface IDataInputs {
+interface IEmailInput {
   email: string;
+}
+interface IPasswordInput {
   password: string;
 }
 
 export const Login = () => {
   const history = useHistory();
-  const [dataInput, setDataInput] = useState<IDataInputs>({} as IDataInputs);
-  console.log(dataInput);
-
+  const [emailInput, setemailInput] = useState<IEmailInput>({} as IEmailInput);
+  const [passwordInput, setPasswordInput] = useState<IPasswordInput>(
+    {} as IPasswordInput
+  );
+  console.log(emailInput, passwordInput);
   const handleAuth = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      apiLogin.post("session", dataInput).then((res) => {
-        localStorage.setItem("@token", res.data.token);
-        history.push("/dash");
-      });
+      try {
+        auth.signInWithEmailAndPassword(
+          emailInput as any,
+          passwordInput as any
+        );
+        history.push("/test");
+      } catch (error) {
+        console.log(error);
+      }
     },
-    [dataInput, history]
+    [history, passwordInput, emailInput]
   );
 
   return (
@@ -34,7 +43,7 @@ export const Login = () => {
         label="Email"
         type="email"
         onChange={(e: any) =>
-          setDataInput({ ...dataInput, email: e.target.value })
+          setemailInput({ ...emailInput, email: e.target.value })
         }
       />
       <Input
@@ -43,7 +52,7 @@ export const Login = () => {
         label="password"
         type="password"
         onChange={(e: any) =>
-          setDataInput({ ...dataInput, password: e.target.value })
+          setPasswordInput({ ...passwordInput, password: e.target.value })
         }
       />
       <button type="submit">Entrar</button>
