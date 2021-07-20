@@ -1,7 +1,14 @@
+import { Input } from "../../components/input";
+
 export const Login = () => {
   return (
     <div>
-      <h1>Ola</h1>
+      <Input
+        name="login"
+        placeholder="escreva seu email"
+        label="Email"
+        type="email"
+      />
     </div>
   );
 };
