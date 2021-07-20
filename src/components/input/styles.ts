@@ -15,6 +15,7 @@ export const InputContainer = styled.div`
     outline: var(--purple);
     padding-left: 5px;
     width: 400px;
+    transition: .2s;
 
     &:focus,
     &:hover {

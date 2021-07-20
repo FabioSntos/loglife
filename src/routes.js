@@ -5,7 +5,8 @@ export const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={Login} />
+        <Route exact path="/" component={Login} />
+        <Route exact path="/test" component={Login} />
       </Switch>
     </BrowserRouter>
   );
