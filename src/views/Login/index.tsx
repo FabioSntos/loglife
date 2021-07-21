@@ -2,6 +2,7 @@ import { FormEvent, useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Input } from "../../components/input";
+
 import { auth } from "../../services/api";
 
 import { Container } from "./styles";
@@ -16,6 +17,13 @@ interface IPasswordInput {
 export const Login = () => {
   const history = useHistory();
 
+  function redirect() {
+    if (localStorage.getItem("@RefreshToken")) {
+      return history.push("/dashboard");
+    }
+  }
+
+  window.onload = redirect;
   const [emailInput, setemailInput] = useState<IEmailInput>({} as IEmailInput);
 
   const [passwordInput, setPasswordInput] = useState<IPasswordInput>(
