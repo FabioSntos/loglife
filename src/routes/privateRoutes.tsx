@@ -9,6 +9,12 @@ const PrivateRoutes: any = ({
   const isSectionActive: any = () => {
     if (isLogin === null) {
       return false;
+    } else {
+      const tokenPayLoad: any = isLogin;
+      const expSeconds = tokenPayLoad.exp;
+      const timeNow = Date.now() / 1000;
+
+      return timeNow > expSeconds ? false : true;
     }
   };
 
