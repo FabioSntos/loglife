@@ -1,8 +1,10 @@
 import firebase from 'firebase';
 
+
 import 'firebase/auth';
 import 'firebase/database';
 
+import axios from 'axios'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQcve8CDUArB_Beji0wer8ekDVmlo-L4Q",
@@ -22,3 +24,6 @@ const database = firebase.database();
 
 export { firebase, auth, database };
 
+export const api = axios.create({
+  baseURL: "http://localhost:3000/api/",
+});
