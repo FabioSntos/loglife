@@ -34,7 +34,7 @@ export const Login = () => {
             });
           })
           .then(() => {
-            history.push("/test");
+            history.push("/dashboard");
           });
       } catch (error) {
         console.log(error);
