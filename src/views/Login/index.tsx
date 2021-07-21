@@ -1,4 +1,4 @@
-import { FormEvent, useCallback, useEffect, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Input } from "../../components/input";
@@ -12,17 +12,13 @@ interface IPasswordInput {
   password: string;
 }
 
-interface IUser {}
-
 export const Login = () => {
   const history = useHistory();
   const [emailInput, setemailInput] = useState<IEmailInput>({} as IEmailInput);
-  const [user, setUser] = useState<IEmailInput>({} as IEmailInput);
+
   const [passwordInput, setPasswordInput] = useState<IPasswordInput>(
     {} as IPasswordInput
   );
-
-  console.log("sem o JSON.stringlfy", emailInput.email, passwordInput.password);
 
   const handleAuth = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
@@ -33,17 +29,18 @@ export const Login = () => {
           .then(() => {
             auth.onAuthStateChanged((user) => {
               if (user) {
-                setUser(user as any);
+                localStorage.setItem("@RefreshToken", user.refreshToken as any);
               }
-              console.log(user);
             });
+          })
+          .then(() => {
+            history.push("/test");
           });
       } catch (error) {
         console.log(error);
       }
-      history.push("/test");
     },
-    [history, passwordInput, emailInput]
+    [emailInput, passwordInput, history]
   );
 
   return (
