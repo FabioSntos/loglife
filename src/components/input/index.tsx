@@ -7,6 +7,7 @@ interface IInputTypes {
   value?: string;
   placeholder: string;
   onChange?: any;
+  required: boolean;
 }
 
 export const Input = ({
@@ -16,6 +17,7 @@ export const Input = ({
   value,
   placeholder,
   onChange,
+  required,
 }: IInputTypes) => {
   return (
     <InputContainer>
@@ -27,6 +29,7 @@ export const Input = ({
         type={type}
         value={value}
         onChange={onChange}
+        required
       />
     </InputContainer>
   );

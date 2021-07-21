@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { Input } from "../../components/input";
 import { auth } from "../../services/api";
+
 import { Container } from "./styles";
 
 interface IEmailInput {
@@ -14,6 +15,7 @@ interface IPasswordInput {
 
 export const Login = () => {
   const history = useHistory();
+
   const [emailInput, setemailInput] = useState<IEmailInput>({} as IEmailInput);
 
   const [passwordInput, setPasswordInput] = useState<IPasswordInput>(
@@ -42,7 +44,6 @@ export const Login = () => {
     },
     [emailInput, passwordInput, history]
   );
-
   return (
     <Container onSubmit={handleAuth}>
       <Input
@@ -53,6 +54,7 @@ export const Login = () => {
         onChange={(e: any) =>
           setemailInput({ ...emailInput, email: e.target.value })
         }
+        required
       />
       <Input
         name="password"
@@ -62,6 +64,7 @@ export const Login = () => {
         onChange={(e: any) =>
           setPasswordInput({ ...passwordInput, password: e.target.value })
         }
+        required
       />
       <button type="submit">Entrar</button>
     </Container>
