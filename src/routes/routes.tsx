@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { ClientProvider } from "../hooks/useClients";
 import { Dashboard } from "../views/dashboard/intex";
 import { Login } from "../views/Login";
 import { NotFound } from "../views/notFound";
@@ -9,7 +10,9 @@ export const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} />
-        <PrivateRoutes path="/dashboard" exact component={Dashboard} />
+        <ClientProvider>
+          <PrivateRoutes path="/dashboard" exact component={Dashboard} />
+        </ClientProvider>
         <Route path="*" component={NotFound} />
       </Switch>
     </BrowserRouter>

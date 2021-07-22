@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { Input } from "../../components/input";
 
-import { auth } from "../../services/api";
+import { auth } from "../../services/firebase";
 
 import { Container } from "./styles";
 

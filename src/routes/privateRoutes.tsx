@@ -13,7 +13,7 @@ const PrivateRoutes: any = ({
       const tokenPayLoad: any = isLogin;
       const expSeconds = tokenPayLoad.exp;
       const timeNow = Date.now() / 1000;
-      
+
       return timeNow > expSeconds ? false : true;
     }
   };
