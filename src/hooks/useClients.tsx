@@ -8,6 +8,7 @@ interface IClients {
   id: number;
   client: string;
   nome?: string;
+  razao?: string;
   sobrenome?: string;
   cpf?: string;
   email: string;

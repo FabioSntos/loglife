@@ -1,5 +1,6 @@
 import React from "react";
 import { createServer, Model } from "miragejs";
+import { ClientsTable } from "../../components/clientsTable";
 
 export const Dashboard = () => {
   createServer({
@@ -29,7 +30,7 @@ export const Dashboard = () => {
           },
           {
             id: 2,
-            client: "pessoa Jurídica",
+            client: "pessoa jurídica",
             nome: "Cursos",
             razao: "LTDA",
             cnpj: "19.105.694/0001-50",
@@ -61,5 +62,9 @@ export const Dashboard = () => {
     },
   });
 
-  return <h1>Testeee</h1>;
+  return (
+    <div>
+      <ClientsTable />
+    </div>
+  );
 };
