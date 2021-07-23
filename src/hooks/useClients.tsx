@@ -7,10 +7,13 @@ import { ReactNode } from "react";
 interface IClients {
   id: number;
   client: string;
-  nome?: string;
+  situacao: string;
+  nomeClient?: string;
+  nomeEmpresa?: string;
   razao?: string;
   sobrenome?: string;
   cpf?: string;
+  cnpj?: string;
   email: string;
   telefone: string;
   cep: string;
@@ -20,7 +23,7 @@ interface IClients {
   estado: string;
   horario: string;
   dia: string;
-  veículo: string;
+  veiculo: string;
   createdAt: string;
 }
 

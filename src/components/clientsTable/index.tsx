@@ -21,7 +21,7 @@ export const ClientsTable = () => {
             return (
               <tr key={client.id}>
                 <td>{client.id}</td>
-                <td>{client.nome}</td>
+                <td>{client.nomeClient}</td>
                 {client.client === "pessoa física" ? (
                   <td>{client.sobrenome}</td>
                 ) : (

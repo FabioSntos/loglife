@@ -13,7 +13,7 @@ export const Dashboard = () => {
           {
             id: 1,
             client: "pessoa física",
-            nome: "Augusto",
+            nomeClient: "Augusto",
             sobrenome: "Botella",
             cpf: "1815218151",
             email: "349237489@gmail.com",
@@ -31,7 +31,7 @@ export const Dashboard = () => {
           {
             id: 2,
             client: "pessoa jurídica",
-            nome: "Cursos",
+            nomeEmpresa: "Cursos",
             razao: "LTDA",
             cnpj: "19.105.694/0001-50",
             email: "349237489@gmail.com",
