@@ -1,13 +1,13 @@
 import { InputContainer } from "./styles";
 
 interface IInputTypes {
-  label: string;
+  label?: string;
   name: string;
   type: string;
   value?: string;
   placeholder: string;
   onChange?: any;
-  required: boolean;
+  required?: boolean;
 }
 
 export const Input = ({

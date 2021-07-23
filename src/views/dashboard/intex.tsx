@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
 import { createServer, Model } from "miragejs";
 import { ClientsTable } from "../../components/clientsTable";
+import { Header } from "../../components/header";
+import { NewClientModal } from "../../components/newClientModal";
+
+Modal.setAppElement("#root");
 
 export const Dashboard = () => {
+  const [isNewClientModalOpen, setIsNewClientModalOpen] = useState(false);
+
   createServer({
     models: {
       client: Model,
@@ -62,9 +69,21 @@ export const Dashboard = () => {
     },
   });
 
+  function handleOpenNewClientModal() {
+    setIsNewClientModalOpen(true);
+  }
+  function handleCloseNewClientModal() {
+    setIsNewClientModalOpen(false);
+  }
+
   return (
     <div>
+      <Header onOpenNewClientModal={handleOpenNewClientModal} />
       <ClientsTable />
+      <NewClientModal
+        isOpen={isNewClientModalOpen}
+        onRequestClose={handleCloseNewClientModal}
+      />
     </div>
   );
 };

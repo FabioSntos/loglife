@@ -1,8 +1,12 @@
 import { FormEvent, useState } from "react";
 import Modal from "react-modal";
+
 import { useClients } from "../../hooks/useClients";
 
 import closeImg from "../../assets/close.svg";
+
+import { Container } from "./styles";
+import { Input } from "../input";
 
 interface INewClientModalProps {
   isOpen: boolean;
@@ -94,8 +98,9 @@ export const NewClientModal = ({
       >
         <img src={closeImg} alt="fechar Modal" />
       </button>
-
-      
+      <Container onSubmit={handleCreateNewClient}>
+        <h2>Cadastrar Cliente</h2>
+      </Container>
     </Modal>
   );
 };
