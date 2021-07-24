@@ -9,7 +9,7 @@ export const InputContainer = styled.div`
   
   
   input {
-    height: 30px;
+    height: 40px;
     border-radius: 6px;
     border: 1px solid var(--purple-light);
     outline: var(--purple);
