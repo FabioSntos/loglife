@@ -14,6 +14,7 @@ import {
   RadioBox,
 } from "./styles";
 import { Input } from "../input";
+import toast from "react-hot-toast";
 interface INewClientModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
@@ -44,15 +45,21 @@ export const NewClientModal = ({
   const [veiculo, setVeiculo] = useState("Moto");
 
   async function handleCreateNewClient(e: FormEvent) {
+    function notifyError() {
+      toast.error("Insira os dados corretamente");
+    }
+    function notifySuccess() {
+      toast.success("Usuário cadastrado com sucesso");
+    }
     let schema = Yup.object().shape({
-      email: Yup.string(),
-      telefone: Yup.string(),
-      cep: Yup.string(),
-      rua: Yup.string(),
-      numero: Yup.number(),
-      cidade: Yup.string(),
-      estado: Yup.string(),
-      dia: Yup.string(),
+      email: Yup.string().required(),
+      telefone: Yup.string().required(),
+      cep: Yup.string().required(),
+      rua: Yup.string().required(),
+      numero: Yup.number().required(),
+      cidade: Yup.string().required(),
+      estado: Yup.string().required(),
+      dia: Yup.string().required(),
     });
     e.preventDefault();
 
@@ -68,7 +75,7 @@ export const NewClientModal = ({
         dia,
       }))
     ) {
-      return console.log(console.log("test"));
+      return notifyError();
     } else {
       await createClient({
         client,
@@ -89,6 +96,7 @@ export const NewClientModal = ({
         dia,
         veiculo,
       });
+      notifySuccess();
     }
 
     setClient("");

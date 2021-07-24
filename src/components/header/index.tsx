@@ -8,7 +8,7 @@ export const Header = ({ onOpenNewClientModal }: IHeaderProps) => {
   return (
     <Container>
       <button onClick={onOpenNewClientModal} type="button">
-        Nova transação
+        Cadastrar
       </button>
     </Container>
   );
