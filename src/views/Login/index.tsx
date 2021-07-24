@@ -1,5 +1,4 @@
 import { FormEvent, useCallback, useState } from "react";
-import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 
 import { Input } from "../../components/input";
@@ -40,7 +39,7 @@ export const Login = () => {
           .then(() => {
             auth.onAuthStateChanged((user) => {
               if (user) {
-                localStorage.setItem("@RefreshToken", user.refreshToken as any);
+                localStorage.setItem("@RefreshToken", user.refreshToken);
               }
             });
           })

@@ -99,7 +99,7 @@ export const NewClientModal = ({
       notifySuccess();
     }
 
-    setClient("");
+    setClient("Pessoa Juridica");
     setNomeClient("");
     setSobrenome("");
     setNomeEmpresa("");
@@ -204,7 +204,7 @@ export const NewClientModal = ({
           />
         ) : (
           <Input
-            label="CPNJ"
+            label="CNPJ"
             name="cpnj"
             placeholder="Escreva seu cnpj"
             type="text"
