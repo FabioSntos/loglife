@@ -53,28 +53,34 @@ export const Login = () => {
     [emailInput, passwordInput, history]
   );
   return (
-    <Container onSubmit={handleAuth}>
-      <Input
-        name="login"
-        placeholder="escreva seu email"
-        label="Email"
-        type="email"
-        onChange={(e: any) =>
-          setemailInput({ ...emailInput, email: e.target.value })
-        }
-        required
-      />
-      <Input
-        name="password"
-        placeholder="escreva sua senha"
-        label="password"
-        type="password"
-        onChange={(e: any) =>
-          setPasswordInput({ ...passwordInput, password: e.target.value })
-        }
-        required
-      />
-      <button type="submit">Entrar</button>
-    </Container>
+    <>
+      <div>
+        <h2>email: test@loglife.com</h2>
+        <h2>senha: loglife</h2>
+      </div>
+      <Container onSubmit={handleAuth}>
+        <Input
+          name="login"
+          placeholder="escreva seu email"
+          label="Email"
+          type="email"
+          onChange={(e: any) =>
+            setemailInput({ ...emailInput, email: e.target.value })
+          }
+          required
+        />
+        <Input
+          name="password"
+          placeholder="escreva sua senha"
+          label="password"
+          type="password"
+          onChange={(e: any) =>
+            setPasswordInput({ ...passwordInput, password: e.target.value })
+          }
+          required
+        />
+        <button type="submit">Entrar</button>
+      </Container>
+    </>
   );
 };
