@@ -1,4 +1,4 @@
-import React from "react";
+import { Container } from "./styles";
 
 interface IHeaderProps {
   onOpenNewClientModal: () => void;
@@ -6,10 +6,10 @@ interface IHeaderProps {
 
 export const Header = ({ onOpenNewClientModal }: IHeaderProps) => {
   return (
-    <div>
+    <Container>
       <button onClick={onOpenNewClientModal} type="button">
         Nova transação
       </button>
-    </div>
+    </Container>
   );
 };

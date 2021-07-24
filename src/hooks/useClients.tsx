@@ -7,7 +7,6 @@ import { ReactNode } from "react";
 interface IClients {
   id: number;
   client: string;
-  situacao: string;
   nomeClient?: string;
   nomeEmpresa?: string;
   razao?: string;

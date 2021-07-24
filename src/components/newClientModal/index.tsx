@@ -1,6 +1,8 @@
 import { FormEvent, useState } from "react";
 import Modal from "react-modal";
 
+import * as Yup from "yup";
+
 import { useClients } from "../../hooks/useClients";
 
 import closeImg from "../../assets/close.svg";
@@ -24,7 +26,6 @@ export const NewClientModal = ({
   const { createClient } = useClients();
 
   const [client, setClient] = useState("");
-  const [situacao, setSituacao] = useState("");
   const [nomeClient, setNomeClient] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [nomeEmpresa, setNomeEmpresa] = useState("");
@@ -43,31 +44,58 @@ export const NewClientModal = ({
   const [veiculo, setVeiculo] = useState("Moto");
 
   async function handleCreateNewClient(e: FormEvent) {
+    let schema = Yup.object().shape({
+      client: Yup.string(),
+      email: Yup.string(),
+      telefone: Yup.string(),
+      cep: Yup.string(),
+      rua: Yup.string(),
+      numero: Yup.number(),
+      cidade: Yup.string(),
+      estado: Yup.string(),
+      horario: Yup.string(),
+      dia: Yup.string(),
+    });
     e.preventDefault();
 
-    await createClient({
-      client,
-      situacao,
-      nomeClient,
-      sobrenome,
-      nomeEmpresa,
-      razao,
-      cpf,
-      cnpj,
-      email,
-      telefone,
-      cep,
-      rua,
-      numero,
-      cidade,
-      estado,
-      horario,
-      dia,
-      veiculo,
-    });
+    if (
+      !(await schema.isValid({
+        client,
+        email,
+        telefone,
+        cep,
+        rua,
+        numero,
+        cidade,
+        estado,
+        horario,
+        dia,
+      }))
+    ) {
+      return console.log(console.log(test));
+    } else {
+      await createClient({
+        client,
+        nomeClient,
+        sobrenome,
+        nomeEmpresa,
+        razao,
+        cpf,
+        cnpj,
+        email,
+        telefone,
+        cep,
+        rua,
+        numero,
+        cidade,
+        estado,
+        horario,
+        dia,
+        veiculo,
+      });
+    }
 
     setClient("");
-    setSituacao("");
     setNomeClient("");
     setSobrenome("");
     setNomeEmpresa("");
@@ -83,7 +111,7 @@ export const NewClientModal = ({
     setEstado("");
     setHorario("");
     setDia("");
-    setVeiculo("moto");
+    setVeiculo("Moto");
 
     onRequestClose();
   }
@@ -106,25 +134,28 @@ export const NewClientModal = ({
         <h2>Cadastro</h2>
         <ClientTypeContainer>
           <RadioBox
+            isActive={client === "Pessoa juridica"}
             type="button"
             onClick={() => {
               setClient("Pessoa juridica");
             }}
+            activeColor="green"
           >
             <span>Pessoa Jurídica</span>
           </RadioBox>
           <RadioBox
+            isActive={client === "Pessoa Fisica"}
             type="button"
             onClick={() => {
               setClient("Pessoa Fisica");
             }}
+            activeColor="green"
           >
             <span>Pessoa Física</span>
           </RadioBox>
         </ClientTypeContainer>
         {client === "Pessoa Fisica" ? (
           <Input
-            required
             label="Nome do Cliente"
             name="nomeClient"
             placeholder="Escreva seu nome"
@@ -133,7 +164,6 @@ export const NewClientModal = ({
           />
         ) : (
           <Input
-            required
             label="nome da Empresa"
             name="NomeEmpresa"
             placeholder="Escreva o nome da sua empresa"
@@ -144,7 +174,6 @@ export const NewClientModal = ({
 
         {client === "Pessoa Fisica" ? (
           <Input
-            required
             label="sobrenome do Cliente"
             name="nomeClient"
             placeholder="Escreva seu sobrenome"
@@ -153,7 +182,6 @@ export const NewClientModal = ({
           />
         ) : (
           <Input
-            required
             label="razão da empresa"
             name="razao"
             placeholder="Escreva a razão"
@@ -164,7 +192,6 @@ export const NewClientModal = ({
 
         {client === "Pessoa Fisica" ? (
           <Input
-            required
             label="CPF"
             name="cpf"
             placeholder="Escreva seu cpf"
@@ -173,7 +200,6 @@ export const NewClientModal = ({
           />
         ) : (
           <Input
-            required
             label="CPNJ"
             name="cpnj"
             placeholder="Escreva seu cnpj"
@@ -182,7 +208,6 @@ export const NewClientModal = ({
           />
         )}
         <Input
-          required
           label="Email"
           name="email"
           placeholder="Escreva seu Email"
@@ -257,12 +282,16 @@ export const NewClientModal = ({
           <RadioBox
             type="button"
             onClick={() => {
-              setVeiculo("moto");
+              setVeiculo("Moto");
             }}
+            isActive={veiculo === "Moto"}
+            activeColor="green"
           >
             <span>Moto</span>
           </RadioBox>
           <RadioBox
+            isActive={veiculo === "carro"}
+            activeColor="green"
             type="button"
             onClick={() => {
               setVeiculo("carro");
@@ -271,6 +300,8 @@ export const NewClientModal = ({
             <span>Carro</span>
           </RadioBox>
           <RadioBox
+            isActive={veiculo === "caminhao"}
+            activeColor="green"
             type="button"
             onClick={() => {
               setVeiculo("caminhao");
