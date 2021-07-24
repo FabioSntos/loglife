@@ -45,7 +45,6 @@ export const NewClientModal = ({
 
   async function handleCreateNewClient(e: FormEvent) {
     let schema = Yup.object().shape({
-      client: Yup.string(),
       email: Yup.string(),
       telefone: Yup.string(),
       cep: Yup.string(),
@@ -53,14 +52,12 @@ export const NewClientModal = ({
       numero: Yup.number(),
       cidade: Yup.string(),
       estado: Yup.string(),
-      horario: Yup.string(),
       dia: Yup.string(),
     });
     e.preventDefault();
 
     if (
       !(await schema.isValid({
-        client,
         email,
         telefone,
         cep,
@@ -68,11 +65,10 @@ export const NewClientModal = ({
         numero,
         cidade,
         estado,
-        horario,
         dia,
       }))
     ) {
-      return console.log(console.log(test));
+      return console.log(console.log("test"));
     } else {
       await createClient({
         client,
@@ -134,10 +130,10 @@ export const NewClientModal = ({
         <h2>Cadastro</h2>
         <ClientTypeContainer>
           <RadioBox
-            isActive={client === "Pessoa juridica"}
+            isActive={client === "Pessoa Juridica"}
             type="button"
             onClick={() => {
-              setClient("Pessoa juridica");
+              setClient("Pessoa Juridica");
             }}
             activeColor="green"
           >
@@ -260,7 +256,7 @@ export const NewClientModal = ({
           name="Estado"
           placeholder="Escreva seu Estado"
           type="text"
-          onChange={(e: any) => setNumero(e.target.value)}
+          onChange={(e: any) => setEstado(e.target.value)}
         />
         <Input
           required
@@ -268,7 +264,7 @@ export const NewClientModal = ({
           name="numero"
           placeholder="Escreva o horario de abertura do estabelecimento"
           type="time"
-          onChange={(e: any) => setNumero(e.target.value)}
+          onChange={(e: any) => setHorario(e.target.value)}
         />
         <Input
           required
@@ -276,7 +272,7 @@ export const NewClientModal = ({
           name="atendimento"
           placeholder="Escreva o numero da residencia"
           type="text"
-          onChange={(e: any) => setNumero(e.target.value)}
+          onChange={(e: any) => setDia(e.target.value)}
         />
         <ClientvehicleContainer>
           <RadioBox

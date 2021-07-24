@@ -19,7 +19,7 @@ export const Dashboard = () => {
         clients: [
           {
             id: 1,
-            client: "pessoa fisica",
+            client: "Pessoa Fisica",
             nomeClient: "Augusto",
             sobrenome: "Botella",
             cpf: "1815218151",
@@ -37,7 +37,7 @@ export const Dashboard = () => {
           },
           {
             id: 2,
-            client: "pessoa juridica",
+            client: "pessoa Juridica",
             nomeEmpresa: "Cursos",
             razao: "LTDA",
             cnpj: "19.105.694/0001-50",
