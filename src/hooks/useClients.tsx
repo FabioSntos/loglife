@@ -56,7 +56,7 @@ export const ClientProvider = ({ children }: IClientProviderProps) => {
     const { client } = response.data;
     setClients([...clients, client]);
   }
-
+  console.log("");
   return (
     <ClientsContext.Provider value={{ clients, createClient }}>
       {children}
